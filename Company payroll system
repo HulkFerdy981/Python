@@ -1,0 +1,28 @@
+class Employee:
+    def __init__(self, emp_id, emp_name, emp_hourly_rate):
+        self.emp_id = emp_id
+        self.emp_name = emp_name
+        self.emp_hourly_rate = emp_hourly_rate
+
+class PayrollSystem:
+    def __init__(self):
+        self.employees = []
+
+    def add_employee(self, emp_id, emp_name, emp_hourly_rate):
+        employee = Employee(emp_id, emp_name, emp_hourly_rate)
+        self.employees.append(employee)
+
+    def calculate_payroll(self):
+        print("Payroll Report:")
+        for employee in self.employees:
+            hours_worked = int(input(f"Enter hours worked for {employee.emp_name}: "))
+            total_pay = hours_worked * employee.emp_hourly_rate
+            print(f"Employee ID: {employee.emp_id}, Name: {employee.emp_name}, Total Pay: {total_pay}")
+
+payroll_system = PayrollSystem()
+
+payroll_system.add_employee(1, "John Doe", 20)
+payroll_system.add_employee(2, "Jane Smith", 25)
+payroll_system.add_employee(3, "Alice Johnson", 30)
+
+payroll_system.calculate_payroll()
