@@ -1,0 +1,54 @@
+class Employee:
+    def __init__(self, emp_id, emp_name, emp_department, emp_salary):
+        self.emp_id = emp_id
+        self.emp_name = emp_name
+        self.emp_department = emp_department
+        self.emp_salary = emp_salary
+
+class CompanyManagementSystem:
+    def __init__(self):
+        self.employees = []
+
+    def add_employee(self, emp_id, emp_name, emp_department, emp_salary):
+        employee = Employee(emp_id, emp_name, emp_department, emp_salary)
+        self.employees.append(employee)
+
+    def display_employees(self):
+        print("Employee List:")
+        for employee in self.employees:
+            print(f"ID: {employee.emp_id}, Name: {employee.emp_name}, Department: {employee.emp_department}, Salary: {employee.emp_salary}")
+
+    def search_employee(self, emp_id):
+        for employee in self.employees:
+            if employee.emp_id == emp_id:
+                print(f"Employee found - ID: {employee.emp_id}, Name: {employee.emp_name}, Department: {employee.emp_department}, Salary: {employee.emp_salary}")
+                return
+        print("Employee not found.")
+
+    def remove_employee(self, emp_id):
+        for employee in self.employees:
+            if employee.emp_id == emp_id:
+                self.employees.remove(employee)
+                print("Employee removed successfully.")
+                return
+        print("Employee not found.")
+
+# Create company management system object
+cms = CompanyManagementSystem()
+
+# Add employee information
+cms.add_employee(1, "John Doe", "IT", 50000)
+cms.add_employee(2, "Jane Smith", "HR", 60000)
+cms.add_employee(3, "Alice Johnson", "Finance", 70000)
+
+# Display all employee information
+cms.display_employees()
+
+# Search for employee information
+cms.search_employee(2)
+
+# Remove employee information
+cms.remove_employee(1)
+
+# Display all employee information
+cms.display_employees()
